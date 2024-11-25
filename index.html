@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice Detail</title>
+</head>
+<body>
+    <h1>Invoice Details</h1>
+    <div id="invoice-details">
+        <p><strong>Invoice Code:</strong> <span id="code_penjualan"></span></p>
+        <p><strong>Company Name:</strong> <span id="company_name"></span></p>
+        <p><strong>Address:</strong> <span id="address"></span></p>
+        <p><strong>Person In Charge:</strong> <span id="person_in_charge"></span></p>
+        <p><strong>Invoice Number:</strong> <span id="no_inv"></span></p>
+        <p><strong>Top Name:</strong> <span id="top_name"></span></p>
+        <p><strong>Due Date:</strong> <span id="due_date"></span></p>
+        <p><strong>Customer Name:</strong> <span id="customer_name"></span></p>
+
+        <!-- Tampilkan link detail invoice -->
+        <p><strong>View Full Invoice: </strong><a id="invoice-link" href="#">Click here to view full invoice</a></p>
+    </div>
+
+    <script>
+        // Mengambil parameter URL
+        const urlParams = new URLSearchParams(window.location.search);
+        
+        // Menampilkan data pada elemen HTML
+        document.getElementById("code_penjualan").textContent = urlParams.get('code_penjualan');
+        document.getElementById("company_name").textContent = urlParams.get('company_name');
+        document.getElementById("address").textContent = urlParams.get('address');
+        document.getElementById("person_in_charge").textContent = urlParams.get('person_in_charge');
+        document.getElementById("no_inv").textContent = urlParams.get('no_inv');
+        document.getElementById("top_name").textContent = urlParams.get('top_name');
+        document.getElementById("due_date").textContent = urlParams.get('due_date');
+        document.getElementById("customer_name").textContent = urlParams.get('customer_name');
+
+        // Membuat link dinamis untuk menampilkan detail invoice
+        const invoiceLink = "https://www.example.com/invoice/full?no_inv=" + urlParams.get('no_inv');
+        document.getElementById("invoice-link").href = invoiceLink;
+    </script>
+</body>
+</html>
