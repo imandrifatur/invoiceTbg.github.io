@@ -152,7 +152,7 @@
   
     // Additional data for the total due and payment status
     const totalDue = urlParams.get('grand');
-    document.getElementById("total_due").textContent = totalDue ? Rp ${totalDue} : 'Rp 0';
+    document.getElementById("total_due").textContent = totalDue ? `Rp ${totalDue}` : 'Rp 0';
     document.getElementById("payment_status").textContent = totalDue && parseFloat(totalDue) > 0 ? 'Unpaid' : 'Paid';
 </script>
 
