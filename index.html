@@ -98,6 +98,10 @@
         <p><strong>Top Name:</strong> <span id="top_name"></span></p>
         <p><strong>Due Date:</strong> <span id="due_date"></span></p>
         <p><strong>Customer Name:</strong> <span id="customer_name"></span></p>
+        <p><strong>Sub Total:</strong> <span id="sub_total"></span></p>
+        <p><strong>Vat:</strong> <span id="vat"></span></p>
+        <p><strong>Grand Total:</strong> <span id="grand"></span></p>
+        <p><strong>Terbilang:</strong> <span id="format_terbilang"></span></p>
     </div>
 
     <div class="invoice-section">
@@ -141,10 +145,13 @@
     document.getElementById("qty_customer").textContent = urlParams.get('qty_customer');
     document.getElementById("unit_price").textContent = urlParams.get('unit_price');
     document.getElementById("total_price").textContent = urlParams.get('total_price');
-
+    document.getElementById("sub_total").textContent = urlParams.get('sub_total');
+    document.getElementById("vat").textContent = urlParams.get('vat');
+    document.getElementById("grand").textContent = urlParams.get('grand');
+    document.getElementById("format_terbilang").textContent = urlParams.get('format_terbilang');
   
     // Additional data for the total due and payment status
-    const totalDue = urlParams.get('total_price');
+    const totalDue = urlParams.get('grand');
     document.getElementById("total_due").textContent = totalDue ? `Rp ${totalDue}` : 'Rp 0';
     document.getElementById("payment_status").textContent = totalDue && parseFloat(totalDue) > 0 ? 'Unpaid' : 'Paid';
 </script>
