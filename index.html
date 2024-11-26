@@ -1,27 +1,3 @@
-<?php
-// Mendapatkan parameter dari URL (misalnya: ?code_penjualan=123&company_name=XYZ)
-$code_penjualan = $_GET['code_penjualan'] ?? '';
-$company_name = $_GET['company_name'] ?? '';
-$address = $_GET['address'] ?? '';
-$person_in_charge = $_GET['person_in_charge'] ?? '';
-$no_inv = $_GET['no_inv'] ?? '';
-$top_name = $_GET['top_name'] ?? '';
-$due_date = $_GET['due_date'] ?? '';
-$customer_name = $_GET['customer_name'] ?? '';
-$sub_total = $_GET['sub_total'] ?? '';
-$vat = $_GET['vat'] ?? '';
-$grand = $_GET['grand'] ?? '';
-$format_terbilang = $_GET['format_terbilang'] ?? '';
-
-// Anda bisa menambahkan logika lebih lanjut untuk validasi atau query ke database
-
-// Tentukan status pembayaran
-$total_due = $grand; // Menggunakan nilai grand total sebagai total due
-$payment_status = ($total_due > 0) ? 'Unpaid' : 'Paid';
-
-// Output HTML dengan PHP
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,7 +5,6 @@ $payment_status = ($total_due > 0) ? 'Unpaid' : 'Paid';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Invoice Detail</title>
     <style>
-        /* CSS Style */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -115,40 +90,71 @@ $payment_status = ($total_due > 0) ? 'Unpaid' : 'Paid';
 
   <div id="invoice-details">
     <div class="invoice-section">
-        <p><strong>Invoice Code:</strong> <span><?php echo htmlspecialchars($code_penjualan); ?></span></p>
-        <p><strong>Company Name:</strong> <span><?php echo htmlspecialchars($company_name); ?></span></p>
-        <p><strong>Address:</strong> <span><?php echo htmlspecialchars($address); ?></span></p>
-        <p><strong>Person In Charge:</strong> <span><?php echo htmlspecialchars($person_in_charge); ?></span></p>
-        <p><strong>Invoice Number:</strong> <span><?php echo htmlspecialchars($no_inv); ?></span></p>
-        <p><strong>Top Name:</strong> <span><?php echo htmlspecialchars($top_name); ?></span></p>
-        <p><strong>Due Date:</strong> <span><?php echo htmlspecialchars($due_date); ?></span></p>
-        <p><strong>Customer Name:</strong> <span><?php echo htmlspecialchars($customer_name); ?></span></p>
-        <p><strong>Sub Total:</strong> <span><?php echo htmlspecialchars($sub_total); ?></span></p>
-        <p><strong>Vat:</strong> <span><?php echo htmlspecialchars($vat); ?></span></p>
-        <p><strong>Grand Total:</strong> <span><?php echo htmlspecialchars($grand); ?></span></p>
-        <p><strong>Terbilang:</strong> <span><?php echo htmlspecialchars($format_terbilang); ?></span></p>
+        <p><strong>Invoice Code:</strong> <span id="code_penjualan"></span></p>
+        <p><strong>Company Name:</strong> <span id="company_name"></span></p>
+        <p><strong>Address:</strong> <span id="address"></span></p>
+        <p><strong>Person In Charge:</strong> <span id="person_in_charge"></span></p>
+        <p><strong>Invoice Number:</strong> <span id="no_inv"></span></p>
+        <p><strong>Top Name:</strong> <span id="top_name"></span></p>
+        <p><strong>Due Date:</strong> <span id="due_date"></span></p>
+        <p><strong>Customer Name:</strong> <span id="customer_name"></span></p>
+        <p><strong>Sub Total:</strong> <span id="sub_total"></span></p>
+        <p><strong>Vat:</strong> <span id="vat"></span></p>
+        <p><strong>Grand Total:</strong> <span id="grand"></span></p>
+        <p><strong>Terbilang:</strong> <span id="format_terbilang"></span></p>
     </div>
 
     <div class="invoice-section">
-        <p><strong>Shipping Date:</strong> <span><?php echo htmlspecialchars($due_date); ?></span></p>
-        <p><strong>Shipping Number:</strong> <span><?php echo htmlspecialchars($no_inv); ?></span></p>
-        <p><strong>Product Name:</strong> <span><?php echo htmlspecialchars($product_name); ?></span></p>
-        <p><strong>Quantity:</strong> <span><?php echo htmlspecialchars($qty_customer); ?></span></p>
-        <p><strong>Unit Price:</strong> <span><?php echo htmlspecialchars($unit_price); ?></span></p>
-        <p><strong>Total Price:</strong> <span><?php echo htmlspecialchars($total_price); ?></span></p>
+        <p><strong>Shipping Date:</strong> <span id="date_sj"></span></p>
+        <p><strong>Shipping Number:</strong> <span id="no_sj"></span></p>
+        <p><strong>Product Name:</strong> <span id="product_name"></span></p>
+        <p><strong>Quantity:</strong> <span id="qty_customer"></span></p>
+        <p><strong>Unit Price:</strong> <span id="unit_price"></span></p>
+        <p><strong>Total Price:</strong> <span id="total_price"></span></p>
     </div>
 
+   
     <div class="invoice-summary">
         <div>
             <strong>Total Due:</strong>
-            <p><?php echo 'Rp ' . number_format($total_due, 0, ',', '.'); ?></p>
+            <p id="total_due">Rp 0</p>
         </div>
         <div>
             <strong>Payment Status:</strong>
-            <p><?php echo $payment_status; ?></p>
+            <p id="payment_status">Unpaid</p>
         </div>
     </div>
   </div>
+
+<script>
+    // Mengambil parameter URL
+    const urlParams = new URLSearchParams(window.location.search);
+
+    // Menampilkan data pada elemen HTML
+    document.getElementById("code_penjualan").textContent = urlParams.get('code_penjualan');
+    document.getElementById("company_name").textContent = urlParams.get('company_name');
+    document.getElementById("address").textContent = urlParams.get('address');
+    document.getElementById("person_in_charge").textContent = urlParams.get('person_in_charge');
+    document.getElementById("no_inv").textContent = urlParams.get('no_inv');
+    document.getElementById("top_name").textContent = urlParams.get('top_name');
+    document.getElementById("due_date").textContent = urlParams.get('due_date');
+    document.getElementById("customer_name").textContent = urlParams.get('customer_name');
+    document.getElementById("date_sj").textContent = urlParams.get('date_sj');
+    document.getElementById("no_sj").textContent = urlParams.get('no_sj');
+    document.getElementById("product_name").textContent = urlParams.get('product_name');
+    document.getElementById("qty_customer").textContent = urlParams.get('qty_customer');
+    document.getElementById("unit_price").textContent = urlParams.get('unit_price');
+    document.getElementById("total_price").textContent = urlParams.get('total_price');
+    document.getElementById("sub_total").textContent = urlParams.get('sub_total');
+    document.getElementById("vat").textContent = urlParams.get('vat');
+    document.getElementById("grand").textContent = urlParams.get('grand');
+    document.getElementById("format_terbilang").textContent = urlParams.get('format_terbilang');
+  
+    // Additional data for the total due and payment status
+    const totalDue = urlParams.get('grand');
+    document.getElementById("total_due").textContent = totalDue ? `Rp ${totalDue}` : 'Rp 0';
+    document.getElementById("payment_status").textContent = totalDue && parseFloat(totalDue) > 0 ? 'Unpaid' : 'Paid';
+</script>
 
 </body>
 </html>
