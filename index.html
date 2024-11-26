@@ -1,3 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>Invoice</h1>
+    <p><strong>Kode Penjualan:</strong> <span id="code_penjualan"></span></p>
+    <p><strong>Nama Perusahaan:</strong> <span id="company_name"></span></p>
+    <p><strong>Alamat:</strong> <span id="address"></span></p>
+    <p><strong>Penanggung Jawab:</strong> <span id="person_in_charge"></span></p>
+    <p><strong>Nomor Invoice:</strong> <span id="no_inv"></span></p>
+    <p><strong>TOP:</strong> <span id="top_name"></span></p>
+    <p><strong>Jatuh Tempo:</strong> <span id="due_date"></span></p>
+    <p><strong>Nama Pelanggan:</strong> <span id="customer_name"></span></p>
+    <p><strong>Tanggal Surat Jalan:</strong> <span id="date_sj"></span></p>
+    <p><strong>Nomor Surat Jalan:</strong> <span id="no_sj"></span></p>
+    
+    <h2>Detail Produk</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Nama Produk</th>
+                <th>Jumlah</th>
+                <th>Harga Satuan</th>
+                <th>Total Harga</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td id="product_name"></td>
+                <td id="qty_customer"></td>
+                <td id="unit_price"></td>
+                <td id="total_price"></td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h3>Rincian Pembayaran</h3>
+    <p><strong>Sub Total:</strong> <span id="sub_total"></span></p>
+    <p><strong>PPN:</strong> <span id="vat"></span></p>
+    <p><strong>Grand Total:</strong> <span id="grand"></span></p>
+    <p><strong>Total Dalam Terbilang:</strong> <span id="format_terbilang"></span></p>
+    <p><strong>Total Tagihan:</strong> <span id="total_due"></span></p>
+    <p><strong>Status Pembayaran:</strong> <span id="payment_status"></span></p>
+
 <script>
     // Mengambil parameter URL
     const urlParams = new URLSearchParams(window.location.search);
