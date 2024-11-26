@@ -42,10 +42,10 @@
     document.getElementById("customer_name").textContent = urlParams.get('customer_name');
     document.getElementById("date_sj").textContent = urlParams.get('date');
     document.getElementById("no_sj").textContent = urlParams.get('no%20sj');
-    document.getElementById("product_name").textContent = urlParams.get('nama%20product');
-    document.getElementById("qty_customer").textContent = urlParams.get('QTY');
-    document.getElementById("unit_price").textContent = urlParams.get('Unit%20Price');
-    document.getElementById("total_price").textContent = urlParams.get('total%20price');
+    document.getElementById("product_name").textContent = urlParams.get('product_name');
+    document.getElementById("qty_customer").textContent = urlParams.get('qty_customer');
+    document.getElementById("unit_price").textContent = urlParams.get('unit_price');
+    document.getElementById("total_price").textContent = urlParams.get('total_price');
 
     // Membuat link dinamis untuk menampilkan detail invoice
     const invoiceLink = "https://www.example.com/invoice/full?no_inv=" + urlParams.get('no_inv');
