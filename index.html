@@ -148,16 +148,19 @@
     <h2>Detail Produk</h2>
     <table>
         <thead>
-            <tr>
+            <tr>  
+                <th>Date</th>
                 <th>Nama Produk</th>
-                <th>Jumlah</th>
+                <th>Qty</th>
                 <th>Harga Satuan</th>
                 <th>Total Harga</th>
             </tr>
         </thead>
         <tbody>
             <tr>
+                <td id="date_sj"></td>
                 <td id="product_name"></td>
+                <td id="satuan_nama"></td>
                 <td id="qty_customer"></td>
                 <td id="unit_price"></td>
                 <td id="total_price"></td>
@@ -214,8 +217,10 @@
         document.getElementById("no_sj").textContent = urlParams.get('no_sj') || 'Tidak tersedia';
 
         // Update tabel item
+        document.getElementById("date_sj").textContent = urlParams.get('date_sj') || 'Tidak tersedia';
         document.getElementById("product_name").textContent = urlParams.get('product_name') || 'Tidak tersedia';
         document.getElementById("qty_customer").textContent = urlParams.get('qty_customer') || 'Tidak tersedia';
+        document.getElementById("satuan_nama").textContent = urlParams.get('satuan_nama') || 'Tidak tersedia';
         document.getElementById("unit_price").textContent = urlParams.get('unit_price') || 'Tidak tersedia';
         document.getElementById("total_price").textContent = urlParams.get('total_price') || 'Tidak tersedia';
 
