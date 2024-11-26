@@ -149,10 +149,11 @@
     <table>
         <thead>
             <tr>  
-                <th>Date</th>
+                <th>Tanggal</th>
                 <th>Nama Produk</th>
+                <th>Unit</th>
                 <th>Qty</th>
-                <th>Harga Satuan</th>
+                <th>Unit Price</th>
                 <th>Total Harga</th>
             </tr>
         </thead>
@@ -213,11 +214,10 @@
         document.getElementById("top_name").textContent = urlParams.get('top_name') || 'Tidak tersedia';
         document.getElementById("due_date").textContent = urlParams.get('due_date') || 'Tidak tersedia';
         document.getElementById("customer_name").textContent = urlParams.get('customer_name') || 'Tidak tersedia';
-        document.getElementById("date_sj").textContent = urlParams.get('date_sj') || 'Tidak tersedia';
         document.getElementById("no_sj").textContent = urlParams.get('no_sj') || 'Tidak tersedia';
 
         // Update tabel item
-        document.getElementById("date_sj").textContent = urlParams.get('date_sj') || 'Tidak tersedia';
+       document.getElementById("date_sj").textContent = urlParams.get('date_sj') || 'Tidak tersedia';
         document.getElementById("product_name").textContent = urlParams.get('product_name') || 'Tidak tersedia';
         document.getElementById("qty_customer").textContent = urlParams.get('qty_customer') || 'Tidak tersedia';
         document.getElementById("satuan_nama").textContent = urlParams.get('satuan_nama') || 'Tidak tersedia';
