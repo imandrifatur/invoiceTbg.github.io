@@ -6,38 +6,51 @@
     <title>Invoice Detail</title>
 </head>
 <body>
-    <h1>Invoice Details</h1>
-    <div id="invoice-details">
-        <p><strong>Invoice Code:</strong> <span id="code_penjualan"></span></p>
-        <p><strong>Company Name:</strong> <span id="company_name"></span></p>
-        <p><strong>Address:</strong> <span id="address"></span></p>
-        <p><strong>Person In Charge:</strong> <span id="person_in_charge"></span></p>
-        <p><strong>Invoice Number:</strong> <span id="no_inv"></span></p>
-        <p><strong>Top Name:</strong> <span id="top_name"></span></p>
-        <p><strong>Due Date:</strong> <span id="due_date"></span></p>
-        <p><strong>Customer Name:</strong> <span id="customer_name"></span></p>
+  <h1>Invoice Details</h1>
+<div id="invoice-details">
+    <p><strong>Invoice Code:</strong> <span id="code_penjualan"></span></p>
+    <p><strong>Company Name:</strong> <span id="company_name"></span></p>
+    <p><strong>Address:</strong> <span id="address"></span></p>
+    <p><strong>Person In Charge:</strong> <span id="person_in_charge"></span></p>
+    <p><strong>Invoice Number:</strong> <span id="no_inv"></span></p>
+    <p><strong>Top Name:</strong> <span id="top_name"></span></p>
+    <p><strong>Due Date:</strong> <span id="due_date"></span></p>
+    <p><strong>Customer Name:</strong> <span id="customer_name"></span></p>
+    <p><strong>Shipping Date:</strong> <span id="date_sj"></span></p>
+    <p><strong>Shipping Number:</strong> <span id="no_sj"></span></p>
+    <p><strong>Product Name:</strong> <span id="product_name"></span></p>
+    <p><strong>Quantity:</strong> <span id="qty_customer"></span></p>
+    <p><strong>Unit Price:</strong> <span id="unit_price"></span></p>
+    <p><strong>Total Price:</strong> <span id="total_price"></span></p>
 
-        <!-- Tampilkan link detail invoice -->
-        <p><strong>View Full Invoice: </strong><a id="invoice-link" href="#">Click here to view full invoice</a></p>
-    </div>
+    <!-- Tampilkan link detail invoice -->
+    <p><strong>View Full Invoice: </strong><a id="invoice-link" href="#">Click here to view full invoice</a></p>
+</div>
 
-    <script>
-        // Mengambil parameter URL
-        const urlParams = new URLSearchParams(window.location.search);
-        
-        // Menampilkan data pada elemen HTML
-        document.getElementById("code_penjualan").textContent = urlParams.get('code_penjualan');
-        document.getElementById("company_name").textContent = urlParams.get('company_name');
-        document.getElementById("address").textContent = urlParams.get('address');
-        document.getElementById("person_in_charge").textContent = urlParams.get('person_in_charge');
-        document.getElementById("no_inv").textContent = urlParams.get('no_inv');
-        document.getElementById("top_name").textContent = urlParams.get('top_name');
-        document.getElementById("due_date").textContent = urlParams.get('due_date');
-        document.getElementById("customer_name").textContent = urlParams.get('customer_name');
+<script>
+    // Mengambil parameter URL
+    const urlParams = new URLSearchParams(window.location.search);
 
-        // Membuat link dinamis untuk menampilkan detail invoice
-        const invoiceLink = "https://www.example.com/invoice/full?no_inv=" + urlParams.get('no_inv');
-        document.getElementById("invoice-link").href = invoiceLink;
-    </script>
+    // Menampilkan data pada elemen HTML
+    document.getElementById("code_penjualan").textContent = urlParams.get('code_penjualan');
+    document.getElementById("company_name").textContent = urlParams.get('company_name');
+    document.getElementById("address").textContent = urlParams.get('address');
+    document.getElementById("person_in_charge").textContent = urlParams.get('person_in_charge');
+    document.getElementById("no_inv").textContent = urlParams.get('no_inv');
+    document.getElementById("top_name").textContent = urlParams.get('top_name');
+    document.getElementById("due_date").textContent = urlParams.get('due_date');
+    document.getElementById("customer_name").textContent = urlParams.get('customer_name');
+    document.getElementById("date_sj").textContent = urlParams.get('date');
+    document.getElementById("no_sj").textContent = urlParams.get('no%20sj');
+    document.getElementById("product_name").textContent = urlParams.get('nama%20product');
+    document.getElementById("qty_customer").textContent = urlParams.get('QTY');
+    document.getElementById("unit_price").textContent = urlParams.get('Unit%20Price');
+    document.getElementById("total_price").textContent = urlParams.get('total%20price');
+
+    // Membuat link dinamis untuk menampilkan detail invoice
+    const invoiceLink = "https://www.example.com/invoice/full?no_inv=" + urlParams.get('no_inv');
+    document.getElementById("invoice-link").href = invoiceLink;
+</script>
+
 </body>
 </html>
