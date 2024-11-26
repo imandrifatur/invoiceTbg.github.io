@@ -82,13 +82,37 @@
             margin-bottom: 5px;
         }
 
+        /* Styling for the invoice table */
+        table {
+            width: 100%;
+            margin-top: 30px;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+
+        .total-row td {
+            font-weight: bold;
+            background-color: #f9f9f9;
+        }
     </style>
 </head>
 <body>
 
+    
+
   <h1>Invoice Details</h1>
 
   <div id="invoice-details">
+    <!-- Invoice Basic Information -->
     <div class="invoice-section">
         <p><strong>Invoice Code:</strong> <span id="code_penjualan"></span></p>
         <p><strong>Company Name:</strong> <span id="company_name"></span></p>
@@ -98,22 +122,45 @@
         <p><strong>Top Name:</strong> <span id="top_name"></span></p>
         <p><strong>Due Date:</strong> <span id="due_date"></span></p>
         <p><strong>Customer Name:</strong> <span id="customer_name"></span></p>
-        <p><strong>Sub Total:</strong> <span id="sub_total"></span></p>
-        <p><strong>Vat:</strong> <span id="vat"></span></p>
-        <p><strong>Grand Total:</strong> <span id="grand"></span></p>
-        <p><strong>Terbilang:</strong> <span id="format_terbilang"></span></p>
     </div>
 
-    <div class="invoice-section">
-        <p><strong>Shipping Date:</strong> <span id="date_sj"></span></p>
-        <p><strong>Shipping Number:</strong> <span id="no_sj"></span></p>
-        <p><strong>Product Name:</strong> <span id="product_name"></span></p>
-        <p><strong>Quantity:</strong> <span id="qty_customer"></span></p>
-        <p><strong>Unit Price:</strong> <span id="unit_price"></span></p>
-        <p><strong>Total Price:</strong> <span id="total_price"></span></p>
+    <!-- Invoice Item Details -->
+    <table>
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Unit Price</th>
+                <th>Total Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><span id="product_name"></span></td>
+                <td><span id="qty_customer"></span></td>
+                <td><span id="unit_price"></span></td>
+                <td><span id="total_price"></span></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Invoice Summary Section -->
+    <div class="invoice-summary">
+        <div>
+            <strong>Sub Total:</strong>
+            <p id="sub_total">Rp 0</p>
+            <strong>Vat:</strong>
+            <p id="vat">Rp 0</p>
+            <strong>Grand Total:</strong>
+            <p id="grand">Rp 0</p>
+        </div>
+        <div>
+            <strong>Terbilang:</strong>
+            <p id="format_terbilang"></p>
+        </div>
     </div>
 
-   
+    <!-- Payment and Due Section -->
     <div class="invoice-summary">
         <div>
             <strong>Total Due:</strong>
