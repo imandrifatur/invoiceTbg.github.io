@@ -3,63 +3,175 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invoice</title>
+    <title>Invoice Detail</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-top: 30px;
+        }
+
+        #invoice-details {
+            background-color: #ffffff;
+            width: 80%;
+            margin: 20px auto;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        p {
+            font-size: 16px;
+            margin: 8px 0;
+            color: #333;
+        }
+
+        strong {
+            color: #444;
+        }
+
+        span {
+            color: #555;
+            font-weight: normal;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .invoice-section {
+            margin-top: 20px;
+        }
+
+        .invoice-section p {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .invoice-section:last-child p {
+            border-bottom: none;
+        }
+
+        .invoice-summary {
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            padding-top: 15px;
+            border-top: 1px solid #ddd;
+        }
+
+        .invoice-summary div {
+            width: 48%;
+        }
+
+        .invoice-summary strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* Styling for the invoice table */
         table {
             width: 100%;
+            margin-top: 30px;
             border-collapse: collapse;
         }
-        table, th, td {
-            border: 1px solid black;
-        }
+
         th, td {
-            padding: 8px;
+            padding: 10px;
             text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+
+        .total-row td {
+            font-weight: bold;
+            background-color: #f9f9f9;
         }
     </style>
 </head>
 <body>
-    <h1>Invoice</h1>
-    <p><strong>Kode Penjualan:</strong> <span id="code_penjualan"></span></p>
-    <p><strong>Nama Perusahaan:</strong> <span id="company_name"></span></p>
-    <p><strong>Alamat:</strong> <span id="address"></span></p>
-    <p><strong>Penanggung Jawab:</strong> <span id="person_in_charge"></span></p>
-    <p><strong>Nomor Invoice:</strong> <span id="no_inv"></span></p>
-    <p><strong>TOP:</strong> <span id="top_name"></span></p>
-    <p><strong>Jatuh Tempo:</strong> <span id="due_date"></span></p>
-    <p><strong>Nama Pelanggan:</strong> <span id="customer_name"></span></p>
-    <p><strong>Tanggal Surat Jalan:</strong> <span id="date_sj"></span></p>
-    <p><strong>Nomor Surat Jalan:</strong> <span id="no_sj"></span></p>
-    
-    <h2>Detail Produk</h2>
+
+  <h1>Invoice Details</h1>
+
+  <div id="invoice-details">
+    <!-- Invoice Basic Information -->
+    <div class="invoice-section">
+        <p><strong>Invoice Code:</strong> <span id="code_penjualan"></span></p>
+        <p><strong>Company Name:</strong> <span id="company_name"></span></p>
+        <p><strong>Address:</strong> <span id="address"></span></p>
+        <p><strong>Person In Charge:</strong> <span id="person_in_charge"></span></p>
+        <p><strong>Invoice Number:</strong> <span id="no_inv"></span></p>
+        <p><strong>Top Name:</strong> <span id="top_name"></span></p>
+        <p><strong>Due Date:</strong> <span id="due_date"></span></p>
+        <p><strong>Customer Name:</strong> <span id="customer_name"></span></p>
+    </div>
+
+    <!-- Invoice Item Details -->
     <table>
         <thead>
             <tr>
-                <th>Nama Produk</th>
-                <th>Jumlah</th>
-                <th>Harga Satuan</th>
-                <th>Total Harga</th>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Unit Price</th>
+                <th>Total Price</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td id="product_name"></td>
-                <td id="qty_customer"></td>
-                <td id="unit_price"></td>
-                <td id="total_price"></td>
+                <td><span id="product_name"></span></td>
+                <td><span id="qty_customer"></span></td>
+                <td><span id="unit_price"></span></td>
+                <td><span id="total_price"></span></td>
             </tr>
         </tbody>
     </table>
-    
-    <h3>Rincian Pembayaran</h3>
-    <p><strong>Sub Total:</strong> <span id="sub_total"></span></p>
-    <p><strong>PPN:</strong> <span id="vat"></span></p>
-    <p><strong>Grand Total:</strong> <span id="grand"></span></p>
-    <p><strong>Total Dalam Terbilang:</strong> <span id="format_terbilang"></span></p>
-    <p><strong>Total Tagihan:</strong> <span id="total_due"></span></p>
-    <p><strong>Status Pembayaran:</strong> <span id="payment_status"></span></p>
 
-<script>
+    <!-- Invoice Summary Section -->
+    <div class="invoice-summary">
+        <div>
+            <strong>Sub Total:</strong>
+            <p id="sub_total">Rp 0</p>
+            <strong>Vat:</strong>
+            <p id="vat">Rp 0</p>
+            <strong>Grand Total:</strong>
+            <p id="grand">Rp 0</p>
+        </div>
+        <div>
+            <strong>Terbilang:</strong>
+            <p id="format_terbilang"></p>
+        </div>
+    </div>
+
+    <!-- Payment and Due Section -->
+    <div class="invoice-summary">
+        <div>
+            <strong>Total Due:</strong>
+            <p id="total_due">Rp 0</p>
+        </div>
+        <div>
+            <strong>Payment Status:</strong>
+            <p id="payment_status">Unpaid</p>
+        </div>
+    </div>
+  </div>
+
+  <script>
     // Mengambil parameter URL
     const urlParams = new URLSearchParams(window.location.search);
 
@@ -74,29 +186,20 @@
     document.getElementById("customer_name").textContent = urlParams.get('customer_name');
     document.getElementById("date_sj").textContent = urlParams.get('date_sj');
     document.getElementById("no_sj").textContent = urlParams.get('no_sj');
+    document.getElementById("product_name").textContent = urlParams.get('product_name');
+    document.getElementById("qty_customer").textContent = urlParams.get('qty_customer');
+    document.getElementById("unit_price").textContent = urlParams.get('unit_price');
+    document.getElementById("total_price").textContent = urlParams.get('total_price');
     document.getElementById("sub_total").textContent = urlParams.get('sub_total');
     document.getElementById("vat").textContent = urlParams.get('vat');
     document.getElementById("grand").textContent = urlParams.get('grand');
     document.getElementById("format_terbilang").textContent = urlParams.get('format_terbilang');
   
-    // Update tabel item
-    const productName = urlParams.get('product_name');
-    const qtyCustomer = urlParams.get('qty_customer');
-    const unitPrice = urlParams.get('unit_price');
-    const totalPrice = urlParams.get('total_price');
-
-    if (productName && qtyCustomer && unitPrice && totalPrice) {
-        // Mengisi tabel dengan data yang ada di URL
-        document.querySelector("#product_name").textContent = productName;
-        document.querySelector("#qty_customer").textContent = qtyCustomer;
-        document.querySelector("#unit_price").textContent = unitPrice;
-        document.querySelector("#total_price").textContent = totalPrice;
-    } else {
-        console.error("Data tabel tidak lengkap di URL");
-    }
-
     // Additional data for the total due and payment status
     const totalDue = parseFloat(urlParams.get('grand'));
     document.getElementById("total_due").textContent = totalDue ? `Rp ${totalDue.toFixed(0)}` : 'Rp 0';
     document.getElementById("payment_status").textContent = totalDue && totalDue > 0 ? 'Unpaid' : 'Paid';
 </script>
+
+</body>
+</html>
