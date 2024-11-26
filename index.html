@@ -4,28 +4,125 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Invoice Detail</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-top: 30px;
+        }
+
+        #invoice-details {
+            background-color: #ffffff;
+            width: 80%;
+            margin: 20px auto;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        p {
+            font-size: 16px;
+            margin: 8px 0;
+            color: #333;
+        }
+
+        strong {
+            color: #444;
+        }
+
+        span {
+            color: #555;
+            font-weight: normal;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .invoice-section {
+            margin-top: 20px;
+        }
+
+        .invoice-section p {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .invoice-section:last-child p {
+            border-bottom: none;
+        }
+
+        .invoice-summary {
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            padding-top: 15px;
+            border-top: 1px solid #ddd;
+        }
+
+        .invoice-summary div {
+            width: 48%;
+        }
+
+        .invoice-summary strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+    </style>
 </head>
 <body>
+
   <h1>Invoice Details</h1>
-<div id="invoice-details">
-    <p><strong>Invoice Code:</strong> <span id="code_penjualan"></span></p>
-    <p><strong>Company Name:</strong> <span id="company_name"></span></p>
-    <p><strong>Address:</strong> <span id="address"></span></p>
-    <p><strong>Person In Charge:</strong> <span id="person_in_charge"></span></p>
-    <p><strong>Invoice Number:</strong> <span id="no_inv"></span></p>
-    <p><strong>Top Name:</strong> <span id="top_name"></span></p>
-    <p><strong>Due Date:</strong> <span id="due_date"></span></p>
-    <p><strong>Customer Name:</strong> <span id="customer_name"></span></p>
-    <p><strong>Shipping Date:</strong> <span id="date_sj"></span></p>
-    <p><strong>Shipping Number:</strong> <span id="no_sj"></span></p>
-    <p><strong>Product Name:</strong> <span id="product_name"></span></p>
-    <p><strong>Quantity:</strong> <span id="qty_customer"></span></p>
-    <p><strong>Unit Price:</strong> <span id="unit_price"></span></p>
-    <p><strong>Total Price:</strong> <span id="total_price"></span></p>
+
+  <div id="invoice-details">
+    <div class="invoice-section">
+        <p><strong>Invoice Code:</strong> <span id="code_penjualan"></span></p>
+        <p><strong>Company Name:</strong> <span id="company_name"></span></p>
+        <p><strong>Address:</strong> <span id="address"></span></p>
+        <p><strong>Person In Charge:</strong> <span id="person_in_charge"></span></p>
+        <p><strong>Invoice Number:</strong> <span id="no_inv"></span></p>
+        <p><strong>Top Name:</strong> <span id="top_name"></span></p>
+        <p><strong>Due Date:</strong> <span id="due_date"></span></p>
+        <p><strong>Customer Name:</strong> <span id="customer_name"></span></p>
+    </div>
+
+    <div class="invoice-section">
+        <p><strong>Shipping Date:</strong> <span id="date_sj"></span></p>
+        <p><strong>Shipping Number:</strong> <span id="no_sj"></span></p>
+        <p><strong>Product Name:</strong> <span id="product_name"></span></p>
+        <p><strong>Quantity:</strong> <span id="qty_customer"></span></p>
+        <p><strong>Unit Price:</strong> <span id="unit_price"></span></p>
+        <p><strong>Total Price:</strong> <span id="total_price"></span></p>
+    </div>
 
     <!-- Tampilkan link detail invoice -->
     <p><strong>View Full Invoice: </strong><a id="invoice-link" href="#">Click here to view full invoice</a></p>
-</div>
+
+    <div class="invoice-summary">
+        <div>
+            <strong>Total Due:</strong>
+            <p id="total_due">Rp 0</p>
+        </div>
+        <div>
+            <strong>Payment Status:</strong>
+            <p id="payment_status">Unpaid</p>
+        </div>
+    </div>
+  </div>
 
 <script>
     // Mengambil parameter URL
@@ -40,8 +137,8 @@
     document.getElementById("top_name").textContent = urlParams.get('top_name');
     document.getElementById("due_date").textContent = urlParams.get('due_date');
     document.getElementById("customer_name").textContent = urlParams.get('customer_name');
-    document.getElementById("date_sj").textContent = urlParams.get('date');
-    document.getElementById("no_sj").textContent = urlParams.get('no%20sj');
+    document.getElementById("date_sj").textContent = urlParams.get('date_sj');
+    document.getElementById("no_sj").textContent = urlParams.get('no_sj');
     document.getElementById("product_name").textContent = urlParams.get('product_name');
     document.getElementById("qty_customer").textContent = urlParams.get('qty_customer');
     document.getElementById("unit_price").textContent = urlParams.get('unit_price');
@@ -50,7 +147,13 @@
     // Membuat link dinamis untuk menampilkan detail invoice
     const invoiceLink = "https://www.example.com/invoice/full?no_inv=" + urlParams.get('no_inv');
     document.getElementById("invoice-link").href = invoiceLink;
+
+    // Additional data for the total due and payment status
+    const totalDue = urlParams.get('total_price');
+    document.getElementById("total_due").textContent = totalDue ? `Rp ${totalDue}` : 'Rp 0';
+    document.getElementById("payment_status").textContent = totalDue && parseFloat(totalDue) > 0 ? 'Unpaid' : 'Paid';
 </script>
 
 </body>
 </html>
+
