@@ -17,13 +17,7 @@
             text-align: center;
             color: #333;
         }
-          /* Posisi elemen di kanan atas */
-          .top-right {
-            position: absolute;
-            top: 88px;
-            right: 40px;
-            text-align: right;
-        }
+         
 
 
         p {
@@ -139,18 +133,13 @@
 <body>
     <h1>Invoice</h1>
   
-  
-   <!-- Elemen yang diposisikan di pojok kanan atas -->
-   <div class="top-right">
     <p><strong>Nomor Invoice:</strong> <span id="no_inv"></span></p>
     <p><strong>Term Of Payment:</strong> <span id="top_name"></span></p>
     <p><strong>Jatuh Tempo:</strong> <span id="due_date"></span></p>
     <p><strong>Nama Pelanggan:</strong> <span id="customer_name"></span></p>
     <p><strong>Tanggal Surat Jalan:</strong> <span id="date_sj"></span></p>
     <p><strong>Nomor Surat Jalan:</strong> <span id="no_sj"></span></p>
-</div>
-<br>
-<br>
+
 <p><strong>Kode Penjualan:</strong> <span id="code_penjualan"></span></p>
 <p><strong>Nama Perusahaan:</strong> <span id="company_name"></span></p>
 <p><strong>Alamat:</strong> <span id="address"></span></p>
@@ -202,7 +191,7 @@
         </tr>
         <tr>
             <td>Total Tagihan</td>
-            <td><span id="grand"></span></td>
+            <td><span id="total_due"></span></td>
         </tr>
         <tr>
             <td>Status Pembayaran</td>
