@@ -171,7 +171,7 @@
     </div>
   </div>
 
-  <script>
+ <script>
     // Mengambil parameter URL
     const urlParams = new URLSearchParams(window.location.search);
 
@@ -186,15 +186,27 @@
     document.getElementById("customer_name").textContent = urlParams.get('customer_name');
     document.getElementById("date_sj").textContent = urlParams.get('date_sj');
     document.getElementById("no_sj").textContent = urlParams.get('no_sj');
-    document.getElementById("product_name").textContent = urlParams.get('product_name');
-    document.getElementById("qty_customer").textContent = urlParams.get('qty_customer');
-    document.getElementById("unit_price").textContent = urlParams.get('unit_price');
-    document.getElementById("total_price").textContent = urlParams.get('total_price');
     document.getElementById("sub_total").textContent = urlParams.get('sub_total');
     document.getElementById("vat").textContent = urlParams.get('vat');
     document.getElementById("grand").textContent = urlParams.get('grand');
     document.getElementById("format_terbilang").textContent = urlParams.get('format_terbilang');
   
+    // Update tabel item
+    const productName = urlParams.get('product_name');
+    const qtyCustomer = urlParams.get('qty_customer');
+    const unitPrice = urlParams.get('unit_price');
+    const totalPrice = urlParams.get('total_price');
+
+    if (productName && qtyCustomer && unitPrice && totalPrice) {
+        // Mengisi tabel dengan data yang ada di URL
+        document.querySelector("#product_name").textContent = productName;
+        document.querySelector("#qty_customer").textContent = qtyCustomer;
+        document.querySelector("#unit_price").textContent = unitPrice;
+        document.querySelector("#total_price").textContent = totalPrice;
+    } else {
+        console.error("Data tabel tidak lengkap di URL");
+    }
+
     // Additional data for the total due and payment status
     const totalDue = parseFloat(urlParams.get('grand'));
     document.getElementById("total_due").textContent = totalDue ? `Rp ${totalDue.toFixed(0)}` : 'Rp 0';
