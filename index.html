@@ -144,10 +144,7 @@
     document.getElementById("unit_price").textContent = urlParams.get('unit_price');
     document.getElementById("total_price").textContent = urlParams.get('total_price');
 
-    // Membuat link dinamis untuk menampilkan detail invoice
-    const invoiceLink = "https://www.example.com/invoice/full?no_inv=" + urlParams.get('no_inv');
-    document.getElementById("invoice-link").href = invoiceLink;
-
+  
     // Additional data for the total due and payment status
     const totalDue = urlParams.get('total_price');
     document.getElementById("total_due").textContent = totalDue ? `Rp ${totalDue}` : 'Rp 0';
