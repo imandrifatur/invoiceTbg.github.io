@@ -89,7 +89,7 @@
 
         // Total Due dan Status Pembayaran
         const totalDue = parseFloat(urlParams.get('grand')) || 0;
-        document.getElementById("total_due").textContent = `Rp ${totalDue.toLocaleString('id-ID')}`;
+        document.getElementById("total_due").textContent = totalDue ? `Rp ${totalDue.toFixed(0)}` : 'Rp 0';
         document.getElementById("payment_status").textContent = totalDue > 0 ? 'Belum Dibayar' : 'Lunas';
     </script>
 </body>
