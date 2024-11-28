@@ -3,239 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invoice</title>
+    <title>Invoice Details</title>
     <style>
-        /* Reset dan Gaya Dasar */
         body {
             font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            box-sizing: border-box;
+            margin: 20px;
         }
-
-        h1, h2, h3 {
+        h1, h3 {
             text-align: center;
-            color: #333;
         }
-         
-
-
-        p {
-            margin: 5px 0;
-        }
-
-        strong {
-            color: #555;
-        }
-
-        /* Table Styling */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-
-        table, th, td {
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
             border: 1px solid #ddd;
-        }
-
-        th, td {
-            text-align: left;
-            padding: 10px;
-            font-size: 14px;
-        }
-
-        th {
-            background-color: #f4f4f4;
-        }
-
-        tr:nth-child(even) {
+            padding: 20px;
+            border-radius: 8px;
             background-color: #f9f9f9;
         }
-
-        .payment-details {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    font-size: 14px;
-}
-
-.payment-details th, 
-.payment-details td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-}
-
-.payment-details th {
-    background-color: #f4f4f4;
-    font-weight: bold;
-    text-align: center;
-}
-
-.payment-details tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-.payment-details tr:hover {
-    background-color: #f1f1f1;
-}
-
-
-        /* Responsif */
-        @media screen and (max-width: 768px) {
-            body {
-                padding: 10px;
-            }
-
-            h1, h2, h3 {
-                font-size: 18px;
-            }
-
-            table, th, td {
-                font-size: 12px;
-            }
-
-            th, td {
-                padding: 8px;
-            }
-
-            p {
-                font-size: 14px;
-            }
+        .data-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
         }
-
-        @media screen and (max-width: 480px) {
-            h1 {
-                font-size: 16px;
-            }
-
-            h2, h3 {
-                font-size: 14px;
-            }
-
-            table, th, td {
-                font-size: 10px;
-            }
-
-            th, td {
-                padding: 6px;
-            }
-
-            p {
-                font-size: 12px;
-            }
+        .data-row strong {
+            margin-right: 10px;
         }
-
-        
     </style>
 </head>
 <body>
-    <h1>Invoice</h1>
-<br>
-    <p><strong>Nomor Invoice:</strong> <span id="no_inv"></span></p>
-    <p><strong>Term Of Payment:</strong> <span id="top_name"></span></p>
-    <p><strong>Jatuh Tempo:</strong> <span id="due_date"></span></p>
-    <p><strong>Nama Pelanggan:</strong> <span id="customer_name"></span></p>
-   
-
-<p><strong>Kode Penjualan:</strong> <span id="code_penjualan"></span></p>
-<p><strong>Nama Perusahaan:</strong> <span id="company_name"></span></p>
-<p><strong>Alamat:</strong> <span id="address"></span></p>
-<p><strong>Penanggung Jawab:</strong> <span id="person_in_charge"></span></p>
-    <br>
-    <h2>Detail Produk</h2>
-    <table>
-        <thead>
-            <tr>  
-                <th>Tanggal</th>
-                <th>No Sj</th>
-                <th>Nama Produk</th>
-                <th>Unit</th>
-                <th>Qty</th>
-                <th>Unit Price</th>
-                <th>Total Harga</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td id="date_sj"></td>
-                <td id="no_sj"></td>
-                <td id="product_name"></td>
-                <td id="satuan_nama"></td>
-                <td id="qty_customer"></td>
-                <td id="unit_price"></td>
-                <td id="total_price"></td>
-            </tr>
-        </tbody>
-    </table>
-    
-    
-    <table class="payment-details">
-        <tr>
-            
-        </tr>
-        <tr>
-            <td>Sub Total</td>
-            <td><span id="sub_total"></span></td>
-        </tr>
-        <tr>
-            <td>PPN</td>
-            <td><span id="vat"></span></td>
-        </tr>
-        <tr>
-            <td>Grand Total</td>
-            <td><span id="grand"></span></td>
-        </tr>
-        <tr>
-            <td>Total Dalam Terbilang</td>
-            <td><span id="format_terbilang"></span></td>
-        </tr>
-        <tr>
-            <td>Total Tagihan</td>
-            <td><span id="total_due"></span></td>
-        </tr>
-        <tr>
-            <td>Status Pembayaran</td>
-            <td><span id="payment_status"></span></td>
-        </tr>
-    </table>
-    
+    <h1>Invoice Details</h1>
+    <div class="container">
+        <div class="data-row">
+            <strong>Code Penjualan:</strong>
+            <span id="code_penjualan"></span>
+        </div>
+        <div class="data-row">
+            <strong>Company Name:</strong>
+            <span id="company_name"></span>
+        </div>
+        <div class="data-row">
+            <strong>Address:</strong>
+            <span id="address"></span>
+        </div>
+        <div class="data-row">
+            <strong>Person in Charge:</strong>
+            <span id="person_in_charge"></span>
+        </div>
+        <div class="data-row">
+            <strong>Invoice Number:</strong>
+            <span id="no_inv"></span>
+        </div>
+        <div class="data-row">
+            <strong>TOP:</strong>
+            <span id="top_name"></span>
+        </div>
+        <div class="data-row">
+            <strong>Due Date:</strong>
+            <span id="due_date"></span>
+        </div>
+        <div class="data-row">
+            <strong>Customer Name:</strong>
+            <span id="customer_name"></span>
+        </div>
+        <div class="data-row">
+            <strong>Sub Total:</strong>
+            <span id="sub_total"></span>
+        </div>
+        <div class="data-row">
+            <strong>VAT:</strong>
+            <span id="vat"></span>
+        </div>
+        <div class="data-row">
+            <strong>Grand Total:</strong>
+            <span id="grand"></span>
+        </div>
+        <div class="data-row">
+            <strong>Total Terbilang:</strong>
+            <span id="format_terbilang"></span>
+        </div>
+    </div>
 
     <script>
-        // Mengambil parameter URL
-        const urlParams = new URLSearchParams(window.location.search);
+        // Fungsi untuk mengambil parameter dari URL
+        function getUrlParams() {
+            const params = {};
+            const queryString = window.location.search.slice(1);
+            const pairs = queryString.split('&');
+            pairs.forEach(pair => {
+                const [key, value] = pair.split('=');
+                params[key] = decodeURIComponent(value);
+            });
+            return params;
+        }
 
-        // Menampilkan data pada elemen HTML
-        document.getElementById("code_penjualan").textContent = urlParams.get('code_penjualan') || 'Tidak tersedia';
-        document.getElementById("company_name").textContent = urlParams.get('company_name') || 'Tidak tersedia';
-        document.getElementById("address").textContent = urlParams.get('address') || 'Tidak tersedia';
-        document.getElementById("person_in_charge").textContent = urlParams.get('person_in_charge') || 'Tidak tersedia';
-        document.getElementById("no_inv").textContent = urlParams.get('no_inv') || 'Tidak tersedia';
-        document.getElementById("top_name").textContent = urlParams.get('top_name') || 'Tidak tersedia';
-        document.getElementById("due_date").textContent = urlParams.get('due_date') || 'Tidak tersedia';
-        document.getElementById("customer_name").textContent = urlParams.get('customer_name') || 'Tidak tersedia';
-       
+        // Ambil parameter dari URL
+        const params = getUrlParams();
 
-        // Update tabel item
-        document.getElementById("date_sj").textContent = urlParams.get('date_sj') || 'Tidak tersedia';
-        document.getElementById("no_sj").textContent = urlParams.get('no_sj') || 'Tidak tersedia';
-        document.getElementById("product_name").textContent = urlParams.get('product_name') || 'Tidak tersedia';
-        document.getElementById("qty_customer").textContent = urlParams.get('qty_customer') || 'Tidak tersedia';
-        document.getElementById("satuan_nama").textContent = urlParams.get('satuan_nama') || 'Tidak tersedia';
-        document.getElementById("unit_price").textContent = urlParams.get('unit_price') || 'Tidak tersedia';
-        document.getElementById("total_price").textContent = urlParams.get('total_price') || 'Tidak tersedia';
-
-        // Rincian Pembayaran
-        document.getElementById("sub_total").textContent = urlParams.get('sub_total') || 'Rp 0';
-        document.getElementById("vat").textContent = urlParams.get('vat') || 'Rp 0';
-        document.getElementById("grand").textContent = urlParams.get('grand') || 'Rp 0';
-        document.getElementById("format_terbilang").textContent = urlParams.get('format_terbilang') || 'Tidak tersedia';
-
-        // Total Tagihan dan Status Pembayaran
-        const totalDue = urlParams.get('grand');
-        document.getElementById("total_due").textContent = totalDue ? `Rp ${totalDue}` : 'Rp 0';
-        document.getElementById("payment_status").textContent = totalDue && parseFloat(totalDue) > 0 ? 'Belum Dibayar' : 'Lunas';
+        // Tampilkan data ke elemen berdasarkan ID
+        Object.keys(params).forEach(key => {
+            const element = document.getElementById(key);
+            if (element) {
+                element.textContent = params[key];
+            }
+        });
     </script>
 </body>
 </html>
