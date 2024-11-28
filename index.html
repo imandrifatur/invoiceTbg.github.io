@@ -17,8 +17,6 @@
             text-align: center;
             color: #333;
         }
-         
-
 
         p {
             margin: 5px 0;
@@ -54,33 +52,32 @@
         }
 
         .payment-details {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    font-size: 14px;
-}
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 14px;
+        }
 
-.payment-details th, 
-.payment-details td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-}
+        .payment-details th, 
+        .payment-details td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
 
-.payment-details th {
-    background-color: #f4f4f4;
-    font-weight: bold;
-    text-align: center;
-}
+        .payment-details th {
+            background-color: #f4f4f4;
+            font-weight: bold;
+            text-align: center;
+        }
 
-.payment-details tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
+        .payment-details tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
 
-.payment-details tr:hover {
-    background-color: #f1f1f1;
-}
-
+        .payment-details tr:hover {
+            background-color: #f1f1f1;
+        }
 
         /* Responsif */
         @media screen and (max-width: 768px) {
@@ -126,23 +123,20 @@
                 font-size: 12px;
             }
         }
-
-        
     </style>
 </head>
 <body>
     <h1>Invoice</h1>
-<br>
+    <br>
     <p><strong>Nomor Invoice:</strong> <span id="no_inv"></span></p>
     <p><strong>Term Of Payment:</strong> <span id="top_name"></span></p>
     <p><strong>Jatuh Tempo:</strong> <span id="due_date"></span></p>
     <p><strong>Nama Pelanggan:</strong> <span id="customer_name"></span></p>
-   
-
-<p><strong>Kode Penjualan:</strong> <span id="code_penjualan"></span></p>
-<p><strong>Nama Perusahaan:</strong> <span id="company_name"></span></p>
-<p><strong>Alamat:</strong> <span id="address"></span></p>
-<p><strong>Penanggung Jawab:</strong> <span id="person_in_charge"></span></p>
+    <p><strong>Kode Penjualan:</strong> <span id="code_penjualan"></span></p>
+    <p><strong>Nama Perusahaan:</strong> <span id="company_name"></span></p>
+    <p><strong>Alamat:</strong> <span id="address"></span></p>
+    <p><strong>Penanggung Jawab:</strong> <span id="person_in_charge"></span></p>
+    <p><strong>noreg:</strong> <span id="noreg_order"></span></p>
     <br>
     <h2>Detail Produk</h2>
     <table>
@@ -170,11 +164,7 @@
         </tbody>
     </table>
     
-    
     <table class="payment-details">
-        <tr>
-            
-        </tr>
         <tr>
             <td>Sub Total</td>
             <td><span id="sub_total"></span></td>
@@ -200,7 +190,6 @@
             <td><span id="payment_status"></span></td>
         </tr>
     </table>
-    
 
     <script>
         // Mengambil parameter URL
@@ -215,7 +204,7 @@
         document.getElementById("top_name").textContent = urlParams.get('top_name') || 'Tidak tersedia';
         document.getElementById("due_date").textContent = urlParams.get('due_date') || 'Tidak tersedia';
         document.getElementById("customer_name").textContent = urlParams.get('customer_name') || 'Tidak tersedia';
-       
+        document.getElementById("noreg_order").textContent = urlParams.get('noreg_order') || 'Tidak tersedia';
 
         // Update tabel item
         document.getElementById("date_sj").textContent = urlParams.get('date_sj') || 'Tidak tersedia';
